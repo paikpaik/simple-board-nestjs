@@ -46,7 +46,9 @@ export class BoardsService {
     });
 
     if (result.affected === 0) {
-      throw new NotFoundException(`Can't find Board with id ${id}`);
+      throw new NotFoundException(
+        `해당 id(${id})의 게시물을 찾을 수 없습니다.`,
+      );
     }
   }
 

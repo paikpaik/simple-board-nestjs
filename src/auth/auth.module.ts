@@ -4,7 +4,7 @@ import { AuthService } from './auth.service';
 import { UserRepository } from './user.repository,';
 import { TypeOrmExModule } from 'src/configs/typeorm-ex.module';
 import { JwtModule } from '@nestjs/jwt';
-import * as config from 'config'
+import * as config from 'config';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './jwt.strategy';
 
@@ -16,13 +16,13 @@ const jwtConfig = config.get('jwt');
     JwtModule.register({
       secret: process.env.JWT_SECRET || jwtConfig.secret,
       signOptions: {
-        expiresIn: jwtConfig.expiresIn
-      }
+        expiresIn: jwtConfig.expiresIn,
+      },
     }),
-    TypeOrmExModule.forCustomRepository([UserRepository])
+    TypeOrmExModule.forCustomRepository([UserRepository]),
   ],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy],
-  exports: [JwtStrategy, PassportModule]
+  exports: [JwtStrategy, PassportModule],
 })
 export class AuthModule {}

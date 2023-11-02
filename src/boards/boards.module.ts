@@ -6,11 +6,8 @@ import { TypeOrmExModule } from 'src/configs/typeorm-ex.module';
 import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
-  imports: [
-    TypeOrmExModule.forCustomRepository([BoardRepository]),
-    AuthModule
-  ],
+  imports: [TypeOrmExModule.forCustomRepository([BoardRepository]), AuthModule],
   controllers: [BoardsController],
-  providers: [BoardsService]
+  providers: [BoardsService],
 })
 export class BoardsModule {}
